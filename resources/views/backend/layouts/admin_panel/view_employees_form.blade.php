@@ -10,16 +10,11 @@
                 </ul>
             </div>
             <div class="body">
-                <form action="{{route('savedform')}}" method="post">
+                <form action="{{route('savedform')}}" method="post" enctype="multipart/form-data">
 
                     @csrf
+                    
 
-                    {{-- <div class="form-group form-float">
-                        <div class="form-line">
-                            <input type="text" class="form-control" name="employee_id"> 
-                            <label class="form-label">Employee ID</label>
-                        </div>
-                    </div> --}}
                     <div class="form-group form-float">
                         <div class="form-line">
                             <input type="text" class="form-control" name="employee_name" required>
@@ -51,12 +46,33 @@
                         </div>
                     </div>
                     
+                    <div class="form-group form-float">
+                        <div class="form-line">
+                            <textarea name="qualification" cols="30" rows="5" class="form-control no-resize" required></textarea>
+                            <label class="form-label">Educational Qualification</label>
+                        </div>
+                    </div>
+                    <div class="form-group form-float">
+                        <div class="form-line">
+                            <textarea name="paddress" cols="30" rows="5" class="form-control no-resize" required></textarea>
+                            <label class="form-label">Parmanent Address</label>
+                        </div>
+                    </div>
+
+
                     <div class="form-group">
                         <input type="radio" value="Male" name="gender" id="male" class="with-gap">
                         <label for="male">Male</label>
 
                         <input type="radio" value="female" name="gender" id="female" class="with-gap">
                         <label for="female" class="m-l-20">Female</label>
+                    </div>
+
+                    <div class="form-group form-float">
+                        <div class="form-line">
+                            <input type="text" class="form-control" name="age" required>
+                            <label class="form-label">Employee Age</label>
+                        </div>
                     </div>
                     
                     <div class="form-group form-float">
@@ -65,6 +81,14 @@
                             <label class="form-label">Password</label>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">Upload Profile Picture</label>
+                        <input type="file" name="image" class="form-control-file" id="exampleFormControlFile1">
+                  </div>
+
+
+
                     <div class="form-group">
                         <input type="checkbox" id="checkbox" name="checkbox">
                         <label for="checkbox">I have read and accept the terms</label>

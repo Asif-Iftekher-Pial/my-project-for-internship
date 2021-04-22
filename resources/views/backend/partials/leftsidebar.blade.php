@@ -27,7 +27,7 @@
         <ul class="list">
             <li class="header">MAIN NAVIGATION</li>
             <li class="active">
-                <a href="/">
+                <a href="/admin">
                     <i class="material-icons">home</i>
                     <span>Home</span>
                 </a>
@@ -56,14 +56,6 @@
                     </li>
                 </ul>
             </li>
-
-
-
-
-
-
-
-
             <li>
                 <a href="javascript:void(0);" class="menu-toggle">
                     <i class="material-icons">view_list</i>
@@ -73,9 +65,7 @@
                     <li>
                         <a href="{{Route('customer')}}">View Customers</a>
                     </li>
-                    <li>
-                        <a href="{{Route('customerform')}}">Manage Customers</a>
-                    </li>
+                    
                     <li>
                         <a href="{{Route('customerOrders')}}">Customer Orders</a>
                     </li>
@@ -84,44 +74,30 @@
                     </li>
                 </ul>
             </li>
-
-
-            
-
-
-
             <li>
                 <a href="javascript:void(0);" class="menu-toggle">
-                    <i class="material-icons">view_list</i>
-                    <span>Products</span>
+                    <i class="material-icons">widgets</i>
+                    <span>Catagory</span>
                 </a>
                 <ul class="ml-menu">
                     <li>
-                        <a href="{{Route('product')}}">View Products</a>
+                        <a href='{{ Route('catagory_list') }}'>Building Product Catagory</a>
                     </li>
-                    <li>
-                        <a href="pages/tables/jquery-datatable.html">Edit Products</a>
-                    </li>
-                    <li>
-                        <a href="pages/tables/editable-table.html">Future Works For Products</a>
-                    </li>
+                    
                 </ul>
             </li>
-
             <li>
                 <a href="javascript:void(0);" class="menu-toggle">
-                    <i class="material-icons">view_list</i>
+                    <i class="material-icons">assignment</i>
                     <span>Products</span>
                 </a>
                 <ul class="ml-menu">
                     <li>
-                        <a href="{{Route('product')}}">View Products</a>
+                        <a href="{{Route('view_product')}}">View Products</a>
                     </li>
+                    
                     <li>
-                        <a href="pages/tables/jquery-datatable.html">Edit Products</a>
-                    </li>
-                    <li>
-                        <a href="pages/tables/editable-table.html">Future Works For Products</a>
+                        <a href="{{ Route('album') }}">Products Album</a>
                     </li>
                 </ul>
             </li>

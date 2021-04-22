@@ -7,6 +7,14 @@ use App\Http\Controllers\Backend\Admin_panel\ViewCustomerOrdersController;
 use App\Http\Controllers\Backend\Admin_panel\ViewProductController;
 use App\Http\Controllers\Backend\Admin_panel\ViewEmployeeController;
 use App\Http\Controllers\Backend\Admin_panel\ViewEmployeeFormController;
+use App\Http\Controllers\Backend\Catagory\ProductCatagory;
+use App\Http\Controllers\Backend\Products_panel\CreateProductForm;
+use App\Http\Controllers\Backend\Products_panel\ProductAlbum;
+use App\Http\Controllers\Backend\Products_panel\ProductTable;
+use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\HomepageController;
+use App\Http\Controllers\Frontend\Product\ProductDetails;
+use App\Http\Controllers\Frontend\UserAuthentication\UserLoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,43 +28,89 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('backend.login.login');
+
+//..............................FrontEnd Route Strats From here..........................
+
+
+Route::get('/',[HomepageController::class,'homepage'])->name('homepage');
+Route::post('/registration',[UserLoginController::class,'registration'])->name('user_registration');
+Route::get('/login_page',[UserLoginController::class,'userloginpage'])->name('user_Login');
+Route::post('/login',[UserLoginController::class,'login'])->name('Login');
+Route::get('/logout',[UserLoginController::class,'logout'])->name('logout');
+
+
+//Product Routing 
+Route::group(['prefix'=>'product'],function(){
+
+Route::get('/view/{id}',[ProductDetails::class,'viewproduct'])->name('product_details');
+Route::get('/catagorized_product',[ProductDetails::class,'catagorizedproduct'])->name('catagorizedproduct');
+
+
 });
 
 
 
 
-//view products Gallary
-Route::get('view_products',[ViewProductController::class,'product'])->name('product');
 
+
+
+
+
+
+
+
+
+
+
+
+
+//..............................FrontEnd Route End ..........................
+
+
+
+//...........................Route BackEnd Starts from here......................
+Route::group(['prefix'=>'admin'],function(){
+
+
+Route::get('/', function () {
+    return view('master');
+});
 
 // Employee Routes
 Route::get('view_employees',[ViewEmployeeController::class,'employee'])->name('employee');
 Route::get('view_eform',[ViewEmployeeFormController::class,'form'])->name('form');
 Route::post('view_eform_saved',[ViewEmployeeFormController::class,'insert'])->name('savedform');
 Route::get('employee/delete/{id}',[ViewEmployeeFormController::class,'delete'])->name('employee.delete');
-
-
-
+Route::get('employee/edit/{id}',[ViewEmployeeFormController::class,'edit'])->name('employee.edit');
+Route::put('employee/update/{id}',[ViewEmployeeFormController::class,'update'])->name('employee.update');
+Route::get('employee/view/{id}',[ViewEmployeeFormController::class,'employeeview'])->name('employee.view');
 
 
 // Customer Routes
 Route::get('view_customers',[ViewCustomerController::class,'customer'])->name('customer');
-Route::get('view_customers_form',[ViewCustomerFormController::class,'customerForm'])->name('customerform');
-Route::post('customers_form_saved',[ViewCustomerFormController::class,'create'])->name('customerformSaved');
-Route::get('customer/delete/{id}', [ViewCustomerFormController::class, 'delete'])->name('delete');
-// Route::get('customer/edit/{id}', [ViewCustomerFormController::class, 'edit'])->name('edit');
-// Route::put('customer/update/{id}', [ViewCustomerFormController::class, 'update'])->name('update');
+Route::get('customer/delete/{id}', [ViewCustomerController::class, 'delete'])->name('customer_delete');
 
 
+//Products Route
+Route::get('product_form',[CreateProductForm::class,'index'])->name('product_form');  // leftsidebar
+Route::post('product_create',[CreateProductForm::class,'create'])->name('product_create');
+Route::get('product/edit/{id}',[CreateProductForm::class,'edit'])->name('product_edit');
+Route::put('product/update/{id}',[CreateProductForm::class,'update'])->name('product_update');
+Route::get('product/delete/{id}', [ProductTable::class, 'delete'])->name('delete'); // fuction is working in product table controller
+Route::get('product_list',[ProductTable::class,'index'])->name('view_product');
+Route::get('all_products',[ProductAlbum::class,'index'])->name('album');
 
+//Catagory
+Route::get('catagory_list',[ProductCatagory::class,'index'])->name('catagory_list');
+Route::post('catagory_create',[ProductCatagory::class,'create'])->name('catagory_crate');
 
 //Customer Orders Table
 Route::get('customer_orders',[ViewCustomerOrdersController::class,'customerOrder'])->name('customerOrders');
 
-
-
-
 //Admin Profile
 Route::get('admin_profile',[AdminProfileController::class,'adminProfile'])->name('profile');
+
+});
+
+
+//...........................................Route BackEnd  end .................................

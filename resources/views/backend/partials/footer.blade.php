@@ -1,5 +1,6 @@
 <script src="{{url('/js/jquery.min.js')}}"></script>
 
+    <script src="https://www.google-analytics.com/analytics.js"></script>
     <!-- Bootstrap Core Js -->
     <script src="{{url('/js/bootstrap.min.js')}}"></script>
 
@@ -38,6 +39,11 @@
 
     <!-- Demo Js -->
     <script src="{{url('/js/demo.js')}}"></script>
+
+
+
+
+
 </body>
 
 </html>

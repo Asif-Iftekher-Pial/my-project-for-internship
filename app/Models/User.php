@@ -13,22 +13,18 @@ class User extends Authenticatable
 
     /**
      * The attributes that are mass assignable.
-     *
+     * 
      * @var array
      */
-    
-    protected $table="eforms";
+    protected $table='users_login';
     protected $fillable = [
-        
-        // sql tables name will be here
-        'e_id',
-        'employee_name',	
-        'employee_designation',	
-        'employee_address',	
-        'contact_information',
-        'email',	
-        'employee_gender',
-        'password'
+        'name',
+        'email',
+        'password',
+        'contact',
+        'address',
+        'gender',
+
     ];
 
     
