@@ -36,9 +36,9 @@
                     <div class="form-group form-float">
                         <div class="form-line">
                             <label for="categoryid">Select Category:</label>
-                            <select class="form-control" name="categoryid" id="categoryid" value="{{ $product_list->categoryname }}">
+                            <select class="form-control" name="category_id" id="category_id" value="{{ $product_list->categoryname }}">
                                 @foreach($catagories as $data)
-                                <option value="{{$data->catagorytype}}">{{$data->catagorytype}}</option>
+                                <option value="{{$data->id}}">{{$data->catagoryname}}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -47,6 +47,12 @@
                         <div class="form-line">
                             <textarea name="description" cols="30" rows="5" class="form-control no-resize" value="{{ $product_list->description }}"required></textarea>
                             <label class="form-label">Description</label>
+                        </div>
+                    </div>
+                    <div class="form-group form-float">
+                        <div class="form-line">
+                            <input type="text" class="form-control" name="quantity" required>
+                            <label class="form-label">Product Quantity</label>
                         </div>
                     </div>
                     <div class="form-group">

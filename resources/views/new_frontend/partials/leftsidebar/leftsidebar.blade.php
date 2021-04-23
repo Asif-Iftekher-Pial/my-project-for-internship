@@ -5,9 +5,9 @@
         {{-- @dd($catagory_names); --}}
         <li class="subMenu open"><a> Building Materials</a>
             <ul>
-                @foreach ($catagory_names as $data )
+                @foreach($catagorylist as $data )
                 
-                <li><a href="products.html"><i class="icon-chevron-right"></i>{{ $data->catagorytype }}</a></li>
+                <li><a href="{{ Route('catagorizedproduct',$data->id )}}"><i class="icon-chevron-right"></i>{{ $data->catagoryname }}</a></li>
             
                 @endforeach
             </ul>

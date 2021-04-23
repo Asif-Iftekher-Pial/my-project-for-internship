@@ -20,6 +20,35 @@
             <div class="alert alert-danger">{{ $error }}</div>
             @endforeach
         @endif
+	
+		<div class="span4">
+			<div class="well">
+			<h5>ALREADY REGISTERED ?</h5>
+			<form  action="{{ route('Login') }}" method="POST">
+
+                @csrf
+
+
+			  <div class="control-group">
+				<label class="control-label" for="inputEmail1">Email</label>
+				<div class="controls">
+				  <input class="span3" type="text" name="email" id="inputEmail" placeholder="Email">
+				</div>
+			  </div>
+			  <div class="control-group">
+				<label class="control-label" for="inputPassword1">Password</label>
+				<div class="controls">
+				  <input type="password" class="span3" name="password" id="inputPassword" placeholder="Password">
+				</div>
+			  </div>
+			  <div class="control-group">
+				<div class="controls">
+				  <button type="submit" class="btn">Sign in</button> <a href="forgetpass.html">Forget password?</a>
+				</div>
+			  </div>
+			</form>
+		</div>
+		</div>
 		<div class="span4">
 			<div class="well">
 			<h5>CREATE YOUR ACCOUNT</h5><br>
@@ -74,34 +103,6 @@
 		</div>
 		</div>
 		<div class="span1"> &nbsp;</div>
-		<div class="span4">
-			<div class="well">
-			<h5>ALREADY REGISTERED ?</h5>
-			<form  action="{{ route('Login') }}" method="POST">
-
-                @csrf
-
-
-			  <div class="control-group">
-				<label class="control-label" for="inputEmail1">Email</label>
-				<div class="controls">
-				  <input class="span3" type="text" name="email" id="inputEmail" placeholder="Email">
-				</div>
-			  </div>
-			  <div class="control-group">
-				<label class="control-label" for="inputPassword1">Password</label>
-				<div class="controls">
-				  <input type="password" class="span3" name="password" id="inputPassword" placeholder="Password">
-				</div>
-			  </div>
-			  <div class="control-group">
-				<div class="controls">
-				  <button type="submit" class="btn">Sign in</button> <a href="forgetpass.html">Forget password?</a>
-				</div>
-			  </div>
-			</form>
-		</div>
-		</div>
 	</div>	
 </div>
 @endsection

@@ -13,8 +13,6 @@ class HomepageController extends Controller
     public function homepage()
     {
         $product_list=Product::all();
-        $catagory_names=Catagory::all();
-        //  dd($catagory_list->all());
-        return view('new_frontend.layouts.homepageAlbum',compact('product_list','catagory_names'));
+        return view('new_frontend.layouts.homepageAlbum',compact('product_list',));
     }
 }

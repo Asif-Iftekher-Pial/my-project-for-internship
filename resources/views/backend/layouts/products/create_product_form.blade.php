@@ -33,12 +33,13 @@
                             <label class="form-label">Product Name</label>
                         </div>
                     </div>
+                    {{-- @dd($catagories->all()); --}}
                     <div class="form-group form-float">
                         <div class="form-line">
                             <label for="categoryid">Select Category:</label>
-                            <select class="form-control" name="categoryid" id="categoryid">
+                            <select class="form-control" name="category_id" id="category_id">
                                 @foreach($catagories as $data)
-                                <option value="{{$data->catagorytype}}">{{$data->catagorytype}}</option>
+                                <option value="{{$data->id}}">{{$data->catagoryname}}</option>
                                 @endforeach
                             </select>
                         </div>

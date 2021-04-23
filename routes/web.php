@@ -43,7 +43,7 @@ Route::get('/logout',[UserLoginController::class,'logout'])->name('logout');
 Route::group(['prefix'=>'product'],function(){
 
 Route::get('/view/{id}',[ProductDetails::class,'viewproduct'])->name('product_details');
-Route::get('/catagorized_product',[ProductDetails::class,'catagorizedproduct'])->name('catagorizedproduct');
+Route::get('/catagorized_product/{id}',[ProductDetails::class,'catagorizedproduct'])->name('catagorizedproduct');
 
 
 });

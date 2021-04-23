@@ -16,11 +16,12 @@ class ProductDetails extends Controller
         // // dd($product_list);
         return view('new_frontend.layouts.product_details',compact('product_list'));  //
     }
-    public function catagorizedproduct()
+    
+    public function catagorizedproduct($id)
     {
-        
-        $catagorized_list = Product::where('categoryname','Cement')->get();
-        
-        return view('new_frontend.layouts.catagorized_product',compact('catagorized_list'));  //
+        // dd($id);
+        $catagorizedProduct=Product::where('category_id',$id)->get(); //select all from product table where categoryname = $id
+        // dd($catagorizedProduct);
+        return view('new_frontend.layouts.catagorized_product',compact('catagorizedProduct'));  //
     }
 }

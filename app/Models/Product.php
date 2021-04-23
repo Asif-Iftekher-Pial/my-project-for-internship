@@ -13,7 +13,7 @@ class Product extends Model
     protected  $guarded=[];
     public function productCatagory()
     {
-        return $this->belongsTo(Catagory::class,'categoryname','catagorytype');  //categoryname is from create product table column and catagorytype is from catagory table 
+        return $this->belongsTo(Catagory::class,'category_id','id');  //category_id is from product table column and id is from catagory table 
     }
 
 }

@@ -37,7 +37,7 @@
                             <th>SL</th>
                             <th>Images</th>
                             <th>Product Name</th>
-                            <th>Catagory</th>
+                            <th>Catagory Name</th>
                             <th>Quantity</th>
                             <th>Description</th>
                             <th>Price</th>
@@ -53,7 +53,7 @@
                                 
                             </td>
                             <td>{{ $data->productname }}</td>
-                            <td>{{ $data->categoryname }}</td>
+                            <td>{{ $data->productCatagory->catagoryname }}</td>
                             <td>{{ $data->quantity }}</td>
                             <td>{{ $data->description }}</td>
                             <td>{{ $data->price }}</td>

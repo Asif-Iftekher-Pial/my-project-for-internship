@@ -22,7 +22,7 @@ class ProductCatagory extends Controller
         //insert into categories table
         Catagory::create([
             // 'catagoryid'=>$request->catagoryid,
-            'catagorytype'=>$request->catagorytype,
+            'catagoryname'=>$request->catagoryname,
             'description'=>$request->description
          ]);
          // insert into categories(name,description) values($request->name,$request->description);

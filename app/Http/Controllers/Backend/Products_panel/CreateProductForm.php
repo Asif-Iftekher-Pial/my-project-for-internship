@@ -13,6 +13,7 @@ class CreateProductForm extends Controller
     public function index()
     {
         $catagories=Catagory::all();
+        // dd($catagories);
         return view('backend.layouts.products.create_product_form',compact('catagories'));
     }
 
@@ -41,7 +42,7 @@ class CreateProductForm extends Controller
         Product::create([
 
             'productname'=>$request->productname,
-            'categoryname'=>$request->categoryid,
+            'category_id'=>$request->category_id,
             'description'=>$request->description,
             'quantity'=>$request->quantity,
             'image'=>$filename,
@@ -76,7 +77,7 @@ class CreateProductForm extends Controller
         }
         $product_list->update([
             'productname'=>$request->productname,
-            'categoryname'=>$request->categoryid,
+            'category_id'=>$request->category_id,
             'description'=>$request->description,
             'quantity'=>$request->quantity,
             'image'=>$filename,

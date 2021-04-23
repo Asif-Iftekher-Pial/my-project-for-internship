@@ -28,8 +28,8 @@
                     </div> --}}
                     <div class="form-group form-float">
                         <div class="form-line">
-                            <input type="text" class="form-control" name="catagorytype" required>
-                            <label class="form-label">Catagory Type</label>
+                            <input type="text" class="form-control" name="catagoryname" required>
+                            <label class="form-label">Catagory Name</label>
                         </div>
                     </div>
                     <div class="form-group form-float">
@@ -74,7 +74,7 @@
                         <tr>
                             <th>SL</th>
                             {{-- <th>Catagory_ID</th> --}}
-                            <th>Catagory_Type</th>
+                            <th>Catagory Name</th>
                             <th>Description</th>
                         </tr>
                     </thead>
@@ -83,7 +83,7 @@
                         <tr>
                             <th scope="row">{{ $key+1 }}</th>
                             {{-- <td>{{ $data->catagoryid }}</td> --}}
-                            <td>{{ $data->catagorytype }}</td>
+                            <td>{{ $data->catagoryname }}</td>
                             <td>{{ $data->description }}</td>
                         </tr>
                         @endforeach
