@@ -31,6 +31,10 @@
             @endif
 
             <div class="body table-responsive">
+                <form class="form-inline" type="get" action="{{ route('searchProduct' )}}">
+                    <input class="form-control mr-sm-2" name="query" type="search" placeholder="Product Name" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -48,9 +52,7 @@
                         <tr>
                             <th scope="row">{{ $key+1 }}</th>
                             <td>
-                                
                                 <img width="150px" src="{{ '/uploaded_Images/just_uploaded/'.$data->image }}" alt="">
-                                
                             </td>
                             <td>{{ $data->productname }}</td>
                             <td>{{ $data->productCatagory->catagoryname }}</td>

@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\Admin_panel\ViewProductController;
 use App\Http\Controllers\Backend\Admin_panel\ViewEmployeeController;
 use App\Http\Controllers\Backend\Admin_panel\ViewEmployeeFormController;
 use App\Http\Controllers\Backend\Catagory\ProductCatagory;
+use App\Http\Controllers\Backend\Login_panel\LoginController;
 use App\Http\Controllers\Backend\Products_panel\CreateProductForm;
 use App\Http\Controllers\Backend\Products_panel\ProductAlbum;
 use App\Http\Controllers\Backend\Products_panel\ProductTable;
@@ -71,44 +72,56 @@ Route::get('/catagorized_product/{id}',[ProductDetails::class,'catagorizedproduc
 //...........................Route BackEnd Starts from here......................
 Route::group(['prefix'=>'admin'],function(){
 
+//login Route
+Route::get('/login',[LoginController::class,'adminlogin'])->name('adminlogin');
+Route::post('/do_login',[LoginController::class,'dologin'])->name('dologin');
 
-Route::get('/', function () {
-    return view('master');
+
+
+route::group(['middleware'=>'admin-auth'],function(){
+
+    Route::get('/',[LoginController::class,'homecontroller'])->name('home');
+    Route::get('/logout',[LoginController::class,'logout'])->name('adminlogout');
+    
+    // Employee Routes
+    Route::get('view_employees',[ViewEmployeeController::class,'employee'])->name('employee');
+    Route::get('view_eform',[ViewEmployeeFormController::class,'form'])->name('form');
+    Route::post('view_eform_saved',[ViewEmployeeFormController::class,'insert'])->name('savedform');
+    Route::get('employee/delete/{id}',[ViewEmployeeFormController::class,'delete'])->name('employee.delete');
+    Route::get('employee/edit/{id}',[ViewEmployeeFormController::class,'edit'])->name('employee.edit');
+    Route::put('employee/update/{id}',[ViewEmployeeFormController::class,'update'])->name('employee.update');
+    Route::get('employee/view/{id}',[ViewEmployeeFormController::class,'employeeview'])->name('employee.view');
+    
+    
+    // Customer Routes
+    Route::get('view_customers',[ViewCustomerController::class,'customer'])->name('customer');
+    Route::get('customer/delete/{id}', [ViewCustomerController::class, 'delete'])->name('customer_delete');
+    
+    
+    //Products Route
+    Route::get('product_form',[CreateProductForm::class,'index'])->name('product_form');  
+    Route::post('product_create',[CreateProductForm::class,'create'])->name('product_create');
+    Route::get('product/edit/{id}',[CreateProductForm::class,'edit'])->name('product_edit');
+    Route::put('product/update/{id}',[CreateProductForm::class,'update'])->name('product_update');
+    Route::get('product/delete/{id}', [ProductTable::class, 'delete'])->name('delete'); 
+    Route::get('product_list',[ProductTable::class,'index'])->name('view_product');
+    Route::get('/searchProduct',[ProductTable::class,'searchProduct'])->name('searchProduct');
+    
+    
+    
+    //Catagory
+    Route::get('catagory_list',[ProductCatagory::class,'index'])->name('catagory_list');
+    Route::post('catagory_create',[ProductCatagory::class,'create'])->name('catagory_crate');
+    
+    //Customer Orders Table
+    Route::get('customer_orders',[ViewCustomerOrdersController::class,'customerOrder'])->name('customerOrders');
+    
+    //Admin Profile
+    Route::get('admin_profile',[AdminProfileController::class,'adminProfile'])->name('profile');
+    
+
 });
 
-// Employee Routes
-Route::get('view_employees',[ViewEmployeeController::class,'employee'])->name('employee');
-Route::get('view_eform',[ViewEmployeeFormController::class,'form'])->name('form');
-Route::post('view_eform_saved',[ViewEmployeeFormController::class,'insert'])->name('savedform');
-Route::get('employee/delete/{id}',[ViewEmployeeFormController::class,'delete'])->name('employee.delete');
-Route::get('employee/edit/{id}',[ViewEmployeeFormController::class,'edit'])->name('employee.edit');
-Route::put('employee/update/{id}',[ViewEmployeeFormController::class,'update'])->name('employee.update');
-Route::get('employee/view/{id}',[ViewEmployeeFormController::class,'employeeview'])->name('employee.view');
-
-
-// Customer Routes
-Route::get('view_customers',[ViewCustomerController::class,'customer'])->name('customer');
-Route::get('customer/delete/{id}', [ViewCustomerController::class, 'delete'])->name('customer_delete');
-
-
-//Products Route
-Route::get('product_form',[CreateProductForm::class,'index'])->name('product_form');  // leftsidebar
-Route::post('product_create',[CreateProductForm::class,'create'])->name('product_create');
-Route::get('product/edit/{id}',[CreateProductForm::class,'edit'])->name('product_edit');
-Route::put('product/update/{id}',[CreateProductForm::class,'update'])->name('product_update');
-Route::get('product/delete/{id}', [ProductTable::class, 'delete'])->name('delete'); // fuction is working in product table controller
-Route::get('product_list',[ProductTable::class,'index'])->name('view_product');
-Route::get('all_products',[ProductAlbum::class,'index'])->name('album');
-
-//Catagory
-Route::get('catagory_list',[ProductCatagory::class,'index'])->name('catagory_list');
-Route::post('catagory_create',[ProductCatagory::class,'create'])->name('catagory_crate');
-
-//Customer Orders Table
-Route::get('customer_orders',[ViewCustomerOrdersController::class,'customerOrder'])->name('customerOrders');
-
-//Admin Profile
-Route::get('admin_profile',[AdminProfileController::class,'adminProfile'])->name('profile');
 
 });
 

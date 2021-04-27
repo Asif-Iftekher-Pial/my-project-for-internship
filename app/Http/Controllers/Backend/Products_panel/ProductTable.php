@@ -16,8 +16,20 @@ class ProductTable extends Controller
         return view('backend.layouts.products.product_list_table',compact('product_list'));
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         Product::findOrFail($id)->delete();
         return redirect()->back()->with('success','Product deleted Successfully');
     }
+
+    public function searchProduct()
+    {
+        
+        $search_text=$_GET['query'];
+
+        $searchProduct=Product::where('productname' ,'LIKE','%'.$search_text.'%')->with('productCatagory')->paginate(5);
+        // dd($searchProduct);
+        return view('backend.layouts.products.products_album',compact('searchProduct'));
+    }
+    
 }

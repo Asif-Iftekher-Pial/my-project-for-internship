@@ -17,9 +17,10 @@ class CreateUsersLoginTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('contact')->unique();
-            $table->string('address');
-            $table->string('gender');
+            $table->string('role')->default('user');
+            $table->string('contact')->nullable();
+            $table->string('address')->nullable();
+            $table->string('gender')->nullable();
             $table->string('password');
             $table->timestamps();
         });
