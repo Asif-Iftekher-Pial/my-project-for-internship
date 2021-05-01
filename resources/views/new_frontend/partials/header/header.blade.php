@@ -49,7 +49,7 @@
 		<a href="product_summary.html"><span>&pound;</span></a>
 		<span class="btn btn-mini">$155.00</span>
 		<a href="product_summary.html"><span class="">$</span></a>
-		<a href="product_summary.html"><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> [ 3 ] Itemes in your cart </span> </a> 
+		<a href={{ route('viewCart') }}><span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i> [ {{ count(Cart::content()) }} ] Itemes in your cart </span> </a> 
 	</div>
 	</div>
 </div>

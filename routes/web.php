@@ -12,8 +12,10 @@ use App\Http\Controllers\Backend\Login_panel\LoginController;
 use App\Http\Controllers\Backend\Products_panel\CreateProductForm;
 use App\Http\Controllers\Backend\Products_panel\ProductAlbum;
 use App\Http\Controllers\Backend\Products_panel\ProductTable;
+use App\Http\Controllers\Frontend\Cart\CartController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\HomepageController;
+use App\Http\Controllers\Frontend\OrderandCart\OrderController;
 use App\Http\Controllers\Frontend\Product\ProductDetails;
 use App\Http\Controllers\Frontend\UserAuthentication\UserLoginController;
 use Illuminate\Support\Facades\Route;
@@ -45,6 +47,11 @@ Route::group(['prefix'=>'product'],function(){
 
 Route::get('/view/{id}',[ProductDetails::class,'viewproduct'])->name('product_details');
 Route::get('/catagorized_product/{id}',[ProductDetails::class,'catagorizedproduct'])->name('catagorizedproduct');
+
+//Product add to cart
+Route::get('/add-to-cart/{id}',[OrderController::class,'addToCart'])->name('addToCart');
+Route::get('/view_cart',[OrderController::class,'viewCart'])->name('viewCart');
+Route::get('/remove_cart',[OrderController::class,'removecartitem'])->name('removecartitem');
 
 
 });

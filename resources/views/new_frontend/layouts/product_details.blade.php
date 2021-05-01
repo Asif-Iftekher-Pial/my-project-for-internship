@@ -41,13 +41,15 @@
             <div class="span6">
                 <h3>{{ $product_list->productname }}</h3>
                 <hr class="soft">
-                <form class="form-horizontal qtyFrm">
+                <form  class="form-horizontal qtyFrm">
+                    
+                    <input type="hidden" name="product_id" value="{{ $product_list['id'] }}">
                     <div class="control-group">
                         <label class="control-label"><span>BDT {{ $product_list->price }}</span></label>
                         <div class="controls">
-                            <button type="submit" class="btn btn-large btn-primary pull-right"> Add to cart <i
-                                    class=" icon-shopping-cart"></i></button>
-                        </div>
+                            <input name="quantity" type="number" class="span1" placeholder="Qty." required/>
+                              <button href="#" class="btn btn-large btn-primary pull-right"> Add to cart <i class=" icon-shopping-cart"></i></button>
+                            </div>
                     </div>
                 </form>
 
