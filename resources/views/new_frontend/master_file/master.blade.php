@@ -3,7 +3,7 @@
 
 
 
-@include('new_frontend.partials.Thumbnails.product_thumbnails')
+@yield('slider')
 
 <div id="mainBody">
 	<div class="container">

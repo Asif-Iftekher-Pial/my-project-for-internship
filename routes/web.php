@@ -51,7 +51,9 @@ Route::get('/catagorized_product/{id}',[ProductDetails::class,'catagorizedproduc
 //Product add to cart
 Route::get('/add-to-cart/{id}',[OrderController::class,'addToCart'])->name('addToCart');
 Route::get('/view_cart',[OrderController::class,'viewCart'])->name('viewCart');
-Route::get('/remove_cart',[OrderController::class,'removecartitem'])->name('removecartitem');
+Route::get('/remove_cart/{rowId}',[OrderController::class,'removecartitem'])->name('removecartitem');
+Route::post('/cart_update/{rowId}',[OrderController::class,'cartupdate'])->name('cartupdate');
+Route::get('/cart_clearcart',[OrderController::class,'clearcart'])->name('clearcart');
 
 
 });

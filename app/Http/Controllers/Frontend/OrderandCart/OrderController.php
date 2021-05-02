@@ -30,13 +30,26 @@ class OrderController extends Controller
     public function viewCart()
     {
         $carted_Products = Cart::content();
+       
         return view('new_frontend.layouts.viewCart', compact('carted_Products'));
     }
-    public function removecartitem()
-    // {
-    //     $carted_Products = Cart::content();
-    //     $rowId = $carted_Products->id;
-
-    //     Cart::remove($rowId);
+    public function removecartitem($rowId)
+    {
+        // dd($rowId);
+        Cart::remove($rowId);
+        return redirect()->back()->with('success', 'Product remove from Cart Successfully');
     }
+    public function cartupdate(Request $request ,$rowId)
+    {
+        Cart::update($rowId, $request->input('quantity'));
+        return redirect()->back()->with('success', 'Product quantity update Successfully');
+    }
+    public function clearcart()
+    {
+        Cart::destroy();
+        return redirect()->back()->with('success', ' Cart Cleared Successfully');
+    
+    }
+
+
 }

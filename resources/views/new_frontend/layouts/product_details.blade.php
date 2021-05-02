@@ -47,8 +47,10 @@
                     <div class="control-group">
                         <label class="control-label"><span>BDT {{ $product_list->price }}</span></label>
                         <div class="controls">
-                            <input name="quantity" type="number" class="span1" placeholder="Qty." required/>
-                              <button href="#" class="btn btn-large btn-primary pull-right"> Add to cart <i class=" icon-shopping-cart"></i></button>
+                            
+                            
+                            <a class="btn btn-large btn-primary pull-right" href={{ Route('addToCart', $product_list->id) }}>Add to Cart<i
+                                class="icon-shopping-cart"></i></a>
                             </div>
                     </div>
                 </form>

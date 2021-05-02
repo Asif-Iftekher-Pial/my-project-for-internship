@@ -1,5 +1,9 @@
 @extends('new_frontend.master_file.master')
 
+@section('slider')
+  @include('new_frontend.partials.Thumbnails.product_thumbnails')  
+@endsection
+
 @section('body_section')
 
 
