@@ -51,5 +51,16 @@ class OrderController extends Controller
     
     }
 
+    
+
+    public function ordered_product()
+    {
+       
+    }
+
+    
+
+
+
 
 }

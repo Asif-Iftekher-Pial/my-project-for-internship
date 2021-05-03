@@ -71,7 +71,7 @@
                     $total=(float)str_replace(',','',Cart::subtotal());
                 @endphp
                 <td colspan="6" style="text-align:right"><strong>TOTAL PAYMENT (50+{{ Cart::subtotal() }}+5%) =</strong></td>
-                <td class="label label-important" style="display:block"> <strong> {{ $total+50}} </strong></td>
+                <td class="label label-important" style="display:block"> <strong> {{$total+(($total*5)/100)+50}} </strong></td>
             </tr>
         </tbody>
     </table>
@@ -79,5 +79,6 @@
     {{-- ------------------------------------------End Cart Table------------------------------ --}}
 
 
-    <a href="#" class="btn btn-large pull-right">Confirm Order <i class="icon-arrow-right"></i></a>
+    <a href="{{ route('ordered_product') }}" class="btn btn-large pull-right">CheckOut <i class="icon-arrow-right"></i></a>
+    {{-- <button type="submit" class="btn btn-large pull-right">Confirm Order <i class="icon-arrow-right"></i></button> --}}
 @endsection

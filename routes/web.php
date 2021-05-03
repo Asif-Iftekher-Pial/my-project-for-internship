@@ -56,6 +56,10 @@ Route::post('/cart_update/{rowId}',[OrderController::class,'cartupdate'])->name(
 Route::get('/cart_clearcart',[OrderController::class,'clearcart'])->name('clearcart');
 
 
+//Ordered Table
+Route::get('/ordered_product',[OrderController::class,'ordered_product'])->name('ordered_product');
+
+
 });
 
 
