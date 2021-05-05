@@ -8,11 +8,13 @@ use App\Models\Product;
 use App\Models\OrderDetail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Mail\OrderConfirmation;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Gloudemans\Shoppingcart\Cart as ShoppingcartCart;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use PHPUnit\Framework\MockObject\Stub\ReturnArgument;
 
 class OrderController extends Controller
@@ -57,31 +59,17 @@ class OrderController extends Controller
         Cart::destroy();
         return redirect()->back()->with('success', 'Cart Cleared Successfully');
     }
-
-
-
-
     public function orderform()
     {
         $carts = Cart::content();
-        return view('new_frontend.layouts.checkout',compact('carts'));
+        return view('new_frontend.layouts.checkout', compact('carts'));
     }
-
-
-
-
-
-
-
 
     public function ordered_product(Request $request)
     {
         $carts = Cart::content();
 
         $total = Cart::subtotal();
-
-
-
         DB::beginTransaction();
         try {
             $ordered_data = Order::create([
@@ -98,28 +86,29 @@ class OrderController extends Controller
                 'email' => auth()->user()->email,
                 'CreditCardType' => $request->CreditCardType,
                 'card_number' => $request->card_number,
-                'price' => $request->country,
-                'price' => $request->country,
-                'price' => $request->country,
             ]);
             foreach ($carts as $data) {
-                OrderDetail::create([
+                $orderdetailsinfo=OrderDetail::create([
                     'order_id' => $ordered_data->id,
                     'product_name' => $data->name,
                     'qty' => $data->qty,
                     'price' => $data->price
                 ]);
             }
-
             DB::commit();
             Cart::destroy();
+
+
+            //User Mail system will be here 
+
+            Mail::to(auth()->user()->email)->send(new OrderConfirmation($orderdetailsinfo));
+
+
+
             return redirect()->route('orderform')->with('success', 'Order Has been placed successfully');
-        } catch (Exception $e) {
+        }catch (Exception $e) {
             DB::rollBack();
             return redirect()->back();
         }
-
-
-        
     }
 }
