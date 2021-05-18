@@ -59,7 +59,8 @@ Route::get('/cart_clearcart',[OrderController::class,'clearcart'])->name('clearc
 //Ordered Table
 Route::post('/ordered_product',[OrderController::class,'ordered_product'])->name('ordered_product');
 Route::get('/orderform',[OrderController::class,'orderform'])->name('orderform');
-
+//my orders
+Route::get('/myorders',[OrderController::class,'myorders'])->name('myorders');
 
 });
 

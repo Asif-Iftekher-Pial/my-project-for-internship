@@ -31,6 +31,6 @@ class OrderConfirmation extends Mailable
      */
     public function build()
     {
-        return $this->view('new_frontend.mail_template.demo')->with(['orderdata'=>$this->orderdetails]);
+        return $this->view('new_frontend.mail_template.template')->with(['orderdata'=>$this->orderdetails]);
     }
 }

@@ -74,7 +74,10 @@
                         <button type="submit" id="submitButton" class="btn btn-primary">Go</button>
                     </form>
                     <ul id="topMenu" class="nav pull-right">
-                        <li class=""><a href="special_offer.html">My Orders</a></li>
+                        @auth
+                        <li class=""><a href="{{ route('myorders') }}"> My Orders</a></li>
+                        @endauth
+                        
                         <li class=""><a href="normal.html">Delivery</a></li>
                         <li class=""><a href="contact.html">Contact</a></li>
                         <li class="">

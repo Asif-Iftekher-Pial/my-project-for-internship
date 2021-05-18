@@ -90,7 +90,9 @@ class OrderController extends Controller
             foreach ($carts as $data) {
                 $orderdetailsinfo=OrderDetail::create([
                     'order_id' => $ordered_data->id,
+                    'customer_id' => $ordered_data->customer_id,
                     'product_name' => $data->name,
+                    'image' => $data->options->image,
                     'qty' => $data->qty,
                     'price' => $data->price
                 ]);
@@ -110,5 +112,11 @@ class OrderController extends Controller
             DB::rollBack();
             return redirect()->back();
         }
+    }
+    public function myorders()
+    {
+        $myorders=OrderDetail::where('customer_id','=',auth()->user()->id)->with('order')->get();
+        
+        return view('new_frontend.layouts.my_orders',compact('myorders'));
     }
 }

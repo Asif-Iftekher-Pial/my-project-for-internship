@@ -2,14 +2,19 @@
 
 namespace App\Http\Controllers\Backend\Login_panel;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Eforms;
+use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
     public function homecontroller()
     {
+
         return view('master');
     }
     //
