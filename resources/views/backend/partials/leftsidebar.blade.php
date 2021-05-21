@@ -101,6 +101,22 @@
                     </ul>
                 </li>
 
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">assignment</i>
+                        <span>Reports</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="#">Delivered Products</a>
+                        </li>
+
+                        <li>
+                            <a href="#">Ordered Products</a>
+                        </li>
+                    </ul>
+                </li>
+
 
 
                 <li>

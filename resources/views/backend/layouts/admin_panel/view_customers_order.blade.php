@@ -40,16 +40,19 @@
                         <thead>
                             <tr>
                                 <th>SL</th>
-                                <th>Image</th>
+                                <th>order Date</th>
                                 <th>Order ID</th>
                                 <th>C-ID</th>
-                                <th>C_Name</th>
+                                <th>Customer Name</th>
                                 <th>Contact Number</th>
                                 <th>Shipping Address</th>
                                 <th>Product Name</th>
+                                <th>Image</th>
+                               
                                 <th>QTY</th>
                                 <th>Price</th>
-                                <th>Delivary Status</th>
+                                <th>Status</th>
+                                <th>Action</th>
                             </tr>
                             {{-- @dd($view_customer_orders); --}}
                         </thead>
@@ -57,19 +60,21 @@
                             @foreach ($view_customer_orders as $key => $data)
                                 <tr>
                                     <th scope="row">{{ $key + 1 }}</th>
+                                    <td>{{ $data->order->created_at }}</td>
+                                    <td>{{ $data->order->id }}</td>
+                                    <td>{{ $data->order->customer->id }}</td>
+                                    <td>{{ $data->order->customer->name }}</td>
+                                    <td>{{ $data->order->phone_number }}</td>
+                                    <td>{{ $data->order->address }}</td>
+                                    <td>{{ $data->product_name }}</td>
                                     <td>
                                         <img width="100px" src="{{ '/uploaded_Images/just_uploaded/' . $data->image }}"
                                             alt="">
                                     </td>
-                                    <td>{{ $data->order->id }}</td>
-                                    <td>{{ $data->order->customer->id }}</td>
-                                    <td>{{ $data->order->customer->name }}</td>
-                                    <td>{{ $data->order->created_at }}</td>
-                                    <td>{{ $data->order->customer->name }}</td>
-                                    <td>{{ $data->product_name }}</td>
                                     <td>{{ $data->qty }}</td>
                                     <td>{{ $data->price }}</td>
-                                    <td>{{ $data->status }}</td>
+                                    <td>{{ $data->status }}</td> 
+                                    <td> <button class="btn btn-success btn-xs" onclick="return confirm('Is the product delivered?')">Delivered</button></td> 
                                    
                                 </tr>
 
