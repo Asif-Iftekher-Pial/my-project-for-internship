@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\Login_panel\LoginController;
 use App\Http\Controllers\Backend\Products_panel\CreateProductForm;
 use App\Http\Controllers\Backend\Products_panel\ProductAlbum;
 use App\Http\Controllers\Backend\Products_panel\ProductTable;
+use App\Http\Controllers\Backend\Report_Generator\Reports;
 use App\Http\Controllers\Frontend\Cart\CartController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\HomepageController;
@@ -130,10 +131,13 @@ route::group(['middleware'=>'admin-auth'],function(){
     
     //Customer Orders Table
     Route::get('customer_orders',[ViewCustomerOrdersController::class,'customerOrder'])->name('customerOrders');
+    Route::get('/customer_orders_detail/{id}',[ViewCustomerOrdersController::class,'ordersdetails'])->name('ordersdetails');
+    Route::get('/deliveroption/{id}/{status}',[ViewCustomerOrdersController::class,'statusupdate'])->name('statusupdate');
     
     //Admin Profile
     Route::get('admin_profile',[AdminProfileController::class,'adminProfile'])->name('profile');
-    
+    //Reports generator 
+    Route::get('reports',[Reports::class,'report'])->name('report');
 
 });
 

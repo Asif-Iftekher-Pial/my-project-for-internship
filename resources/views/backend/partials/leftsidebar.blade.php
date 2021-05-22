@@ -108,7 +108,7 @@
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="#">Delivered Products</a>
+                            <a href="{{ route('report') }}">Sale Products</a>
                         </li>
 
                         <li>

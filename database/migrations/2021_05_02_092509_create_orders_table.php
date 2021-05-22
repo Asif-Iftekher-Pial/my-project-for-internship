@@ -28,6 +28,7 @@ class CreateOrdersTable extends Migration
             $table->string('email');
             $table->string('CreditCardType');
             $table->string('card_number');
+            $table->string('status')->default('Processing');
             $table->timestamps();
         });
     }

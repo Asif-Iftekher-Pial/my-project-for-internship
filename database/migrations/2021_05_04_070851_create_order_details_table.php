@@ -21,7 +21,7 @@ class CreateOrderDetailsTable extends Migration
             $table->string('image');
             $table->string('qty');
             $table->string('price');
-            $table->string('status')->default('processing');
+            
             $table->timestamps();
         });
     }

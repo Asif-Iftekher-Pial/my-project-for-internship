@@ -39,7 +39,15 @@
 
     <!-- Demo Js -->
     <script src="{{url('/js/demo.js')}}"></script>
-
+    
+   
+    <!-- Select Plugin Js -->
+    <script src="{{ url('/plugins/bootstrap-select/js/bootstrap-select.js') }}"></script>
+ 
+    <!-- Dropzone Plugin Js -->
+    <script src="{{url ('/plugins/dropzone/dropzone.js') }}"></script>
+<!-- Multi Select Plugin Js -->
+<script src="{{url ('/plugins/multi-select/js/jquery.multi-select.js') }}"></script>
 
 
 

@@ -1,13 +1,12 @@
 @extends('master')
 @section('clean_dashboard_content')
 
-
-
     {{-- Customer Order Table starts here --}}
 
 
 
     <div class="row clearfix">
+
 
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
@@ -37,22 +36,23 @@
                         <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
                     </form>
                     <table class="table table-striped">
+                        @if (session()->has('success'))
+                        <div class="alert alert-success">
+                            {{ session()->get('success') }}
+                        </div>
+                    @endif
                         <thead>
                             <tr>
                                 <th>SL</th>
                                 <th>order Date</th>
-                                <th>Order ID</th>
+                                
                                 <th>C-ID</th>
                                 <th>Customer Name</th>
                                 <th>Contact Number</th>
                                 <th>Shipping Address</th>
-                                <th>Product Name</th>
-                                <th>Image</th>
-                               
-                                <th>QTY</th>
-                                <th>Price</th>
                                 <th>Status</th>
                                 <th>Action</th>
+                                <th>View</th>
                             </tr>
                             {{-- @dd($view_customer_orders); --}}
                         </thead>
@@ -60,22 +60,47 @@
                             @foreach ($view_customer_orders as $key => $data)
                                 <tr>
                                     <th scope="row">{{ $key + 1 }}</th>
-                                    <td>{{ $data->order->created_at }}</td>
-                                    <td>{{ $data->order->id }}</td>
-                                    <td>{{ $data->order->customer->id }}</td>
-                                    <td>{{ $data->order->customer->name }}</td>
-                                    <td>{{ $data->order->phone_number }}</td>
-                                    <td>{{ $data->order->address }}</td>
-                                    <td>{{ $data->product_name }}</td>
+                                    <td>{{ $data->created_at }}</td>
+                                    
+                                    <td>{{ $data->customer->id }}</td>
+                                    <td>{{ $data->customer->name }}</td>
+                                    <td>{{ $data->phone_number }}</td>
+                                    <td>{{ $data->address }}</td>
+                                    <td>{{ $data->status }}</td>
                                     <td>
-                                        <img width="100px" src="{{ '/uploaded_Images/just_uploaded/' . $data->image }}"
-                                            alt="">
+                                        <div class="dropdown">
+                                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                Status Update
+                                                <span class="caret"></span>
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                                @if ($data->status == 'Processing')
+                                                    <li><a class="dropdown-item"
+                                                            href="{{ route('statusupdate', ['id' => $data->id, 'status' => 'Delivered']) }}">Delivered</a>
+                                                    </li>
+                                                    <li><a class="dropdown-item"
+                                                            href="{{ route('statusupdate', ['id' => $data->id, 'status' => 'InTransit']) }}">In
+                                                            Transit</a>
+                                                    </li>
+                                                    @elseif ($data->status == 'Delivered')
+                                                    <li><a class="dropdown-item"
+                                                        href="{{ route('statusupdate', ['id' => $data->id, 'status' => 'InTransit']) }}">In
+                                                        Transit</a>
+                                                </li>
+                                                <li><a class="dropdown-item"
+                                                        href="{{ route('statusupdate', ['id' => $data->id, 'status' => 'Processing']) }}">Processing</a>
+                                                </li>
+
+                                                @else
+                                                    <li><a class="dropdown-item"
+                                                            href="{{ route('statusupdate', ['id' => $data->id, 'status' => 'Processing']) }}">Processing</a>
+                                                    </li>
+                                                @endif
+                                            </ul>
+                                        </div>
                                     </td>
-                                    <td>{{ $data->qty }}</td>
-                                    <td>{{ $data->price }}</td>
-                                    <td>{{ $data->status }}</td> 
-                                    <td> <button class="btn btn-success btn-xs" onclick="return confirm('Is the product delivered?')">Delivered</button></td> 
-                                   
+                                    <td><a class="btn btn-success btn-xs"  href="{{ route('ordersdetails',$data->id) }}">View</a></td>
                                 </tr>
 
                             @endforeach
