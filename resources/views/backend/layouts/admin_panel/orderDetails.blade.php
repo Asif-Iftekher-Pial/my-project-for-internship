@@ -42,12 +42,15 @@
                             <th>Image</th>
                             <th>QTY</th>
                             <th>Price</th>
+                            
                         </tr>
                         {{-- @dd($view_customer_orders); --}}
                     </thead>
+                    
                     <tbody>
                         @foreach ($products->myorder as $key => $data)
                             <tr>
+                               
                                 <th scope="row">{{ $key + 1 }}</th>
                                 <td>{{ $data->product_name }}</td>
                                 <td>
@@ -56,14 +59,15 @@
                                 </td>
                                 <td>{{ $data->qty }}</td>
                                 <td>{{ $data->price }}</td>
-                              
-                                
                             </tr>
-
                         @endforeach
-
                     </tbody>
+                   
                 </table>
+                <div style="float: right;">
+                    Tottal Price is= {{ $products->price }} BDT
+                </div>
+               
             </div>
         </div>
     </div>

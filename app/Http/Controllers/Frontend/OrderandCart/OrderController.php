@@ -97,19 +97,21 @@ class OrderController extends Controller
                     'price' => $data->price
                 ]);
             }
-            DB::commit();
-            Cart::destroy();
-
-
+            // DB::commit();
+            // Cart::destroy();
+            // dd('hii');
             //User Mail system will be here 
 
-            Mail::to(auth()->user()->email)->send(new OrderConfirmation($orderdetailsinfo));
+            $ordered_data->load('myorder','customer');
 
+            Mail::to(auth()->user()->email)->send(new OrderConfirmation($ordered_data));
 
+            // dd('send mail');
 
             return redirect()->route('orderform')->with('success', 'Order Has been placed successfully');
         }catch (Exception $e) {
             DB::rollBack();
+            dd($e->getMessage());
             return redirect()->back();
         }
     }

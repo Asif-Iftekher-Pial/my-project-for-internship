@@ -29,7 +29,7 @@
                 <img width="100px" src="{{ '/uploaded_Images/just_uploaded/'.$data->image }}" alt="">
             </td>
             <td>{{ $data->price }}</td>
-            <td>{{ $data->status }}</td>
+            <td>{{ $data->order->status }}</td>
         </tr>
         @endforeach 
     </tbody>

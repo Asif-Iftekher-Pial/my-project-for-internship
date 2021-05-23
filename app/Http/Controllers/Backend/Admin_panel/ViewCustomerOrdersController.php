@@ -23,8 +23,9 @@ class ViewCustomerOrdersController extends Controller
     public function ordersdetails($id)
     {
         $products=Order::with('myorder')->find($id);
+        $total = Cart::subtotal();
 
-        return view('backend.layouts.admin_panel.orderDetails',compact('products'));
+        return view('backend.layouts.admin_panel.orderDetails',compact('products','total'));
     }
     public function statusupdate($id,$status)
     {

@@ -85,7 +85,7 @@
 
                             @auth
                                 <a href="{{ route('logout') }}" role="button" style="padding-right:0"><span
-                                        class="btn btn-large btn-success">LogOut</span></a>
+                                        class="btn btn-large btn-success">Logout</span></a>
 
 
                                 {{-- <span style="color: white">{{ auth()->user()->name}}</span><a href="{{ route('logout') }}">LogOut </a> --}}

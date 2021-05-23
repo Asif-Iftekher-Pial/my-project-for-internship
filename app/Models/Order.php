@@ -15,6 +15,7 @@ class Order extends Model
         return $this->hasMany(OrderDetail::class, 'order_id', 'id');  //orderdetail_id is from order table column and id is from orderdetail table 
     }
 
+
     public function customer()
     {
         return $this->belongsTo(User::class,'customer_id','id');

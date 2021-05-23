@@ -17,11 +17,14 @@ class OrderConfirmation extends Mailable
      *
      * @return void
      */
-    protected $orderdetails;
-    public function __construct($orderdetailsinfo)
+    public $order;
+
+    public function __construct($order)
     {
         //
-        $this->orderdetails=$orderdetailsinfo;
+        $this->order=$order;
+
+        // dd($orderdetailsinfo);
     }
 
     /**
@@ -31,6 +34,6 @@ class OrderConfirmation extends Mailable
      */
     public function build()
     {
-        return $this->view('new_frontend.mail_template.template')->with(['orderdata'=>$this->orderdetails]);
+        return $this->view('new_frontend.mail_template.template');
     }
 }

@@ -22,34 +22,34 @@
 </head>
 
 <body>
+
+
+   Name ={{ $order->customer->name }}
+  
     <table class="table table-success table-striped">
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">Customer Name</th>
-            <th scope="col">Shipping Address</th>
-            <th scope="col">Contact Number</th>
-            <th scope="col">Payment Method</th>
-            <th scope="col">Order ID</th>
+            <td>sl</td>
             <th scope="col">Product Name</th>
             <th scope="col">QTY</th>
             <th scope="col">Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>{{ $orderdata->orderanddetail->first_name }} {{ $orderdata->orderanddetail->last_name }}</td>
-            <td>{{ $orderdata->product_name }}</td>
-            <td>{{ $orderdata->orderanddetail->address }}</td>
-            <td>{{ $orderdata->orderanddetail->phone_number }}</td>
-            <td>{{ $orderdata->orderanddetail->CreditCardType }}</td>
-            <td>{{ $orderdata->order_id }}</td>
-            <td>{{ $orderdata->product_name }}</td>
-            <td>{{ $orderdata->qty }}</td>
-            <td>{{ $orderdata->price }}</td>
             
           </tr>
+        </thead>
+        
+
+        
+        <tbody>
+          @foreach ($order->myorder as $item )
+          <tr>
+            <th scope="row">1</th> 
+            <td>{{ $item->product_name }}</td>
+            <td>{{ $item->qty }}</td>
+            <td>{{ $item->price }}</td>
+            
+          </tr>
+             
+    @endforeach
         </tbody>
       </table>
       <ib-span id="ib-print-btn" class="ib_default_button" data-tooltip="tooltip" data-placement="bottom" title="" data-original-title="This command is also used to save<br></ib>the invoice as PDF. See FAQ for more info.">
