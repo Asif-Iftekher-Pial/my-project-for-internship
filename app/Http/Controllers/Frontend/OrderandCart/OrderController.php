@@ -97,8 +97,8 @@ class OrderController extends Controller
                     'price' => $data->price
                 ]);
             }
-            // DB::commit();
-            // Cart::destroy();
+            DB::commit();
+            Cart::destroy();
             // dd('hii');
             //User Mail system will be here 
 

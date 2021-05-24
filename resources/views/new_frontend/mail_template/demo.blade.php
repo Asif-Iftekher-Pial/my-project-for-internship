@@ -155,8 +155,8 @@
             display: block;
         }
 
-                /* Invoice styles */
-                /**
+        /* Invoice styles */
+        /**
         * DON'T override any styles for the <html> and <body> tags, as this may break the layout.
         * Instead wrap everything in one main <div id="container"> element where you may change
         * something like the font or the background of the invoice
@@ -166,11 +166,11 @@
             /* MOVE ALONG, NOTHING TO CHANGE HERE! */
         }
 
-                /** 
+        /** 
         * IMPORTANT NOTICE: DON'T USE '!important' otherwise this may lead to broken print layout.
         * Some browsers may require '!important' in oder to work properly but be careful with it.
         */
-                .clearfix {
+        .clearfix {
             display: block;
             clear: both;
         }
@@ -450,11 +450,11 @@
             margin-left: 30px !important;
         }
 
-                /**
+        /**
         * If the printed invoice is not looking as expected you may tune up
         * the print styles (you can use !important to override styles)
         */
-                @media print {
+        @media print {
             /* Here goes your print styles */
         }
 
@@ -463,169 +463,171 @@
 
 <body>
     <div id="container">
-      <section id="memo">
-        <div class="logo">
-          <img data-logo="{company_logo}" />
-        </div>
-  
-        <div class="company-info">
-          <div>Construction Management System</div>
-  
-          <br />
-  
-          <span>Gulshan,Dhaka </span>
-          <span>{1212}</span>
-  
-          <br />
-  
-          <span>01721926182</span>
-          <span>iftekherpial67@gmail.com</span>
-        </div>
-  
-      </section>
-  
-      <section id="invoice-title-number">
-  
-        <span id="title">Coustomer Invoice</span>
-  
-      </section>
-  
-      <div class="clearfix"></div>
-  
-      <section id="client-info">
-        <span>To:</span>
-        <div>
-          <span class="bold">{{ $orderdata->orderanddetail->first_name }} {{ $orderdata->orderanddetail->last_name }}<</span>
-        </div>
-  
-        <div>
-          <span>{{ $orderdata->orderanddetail->address }}</span>
-        </div>
-  
-        <div>
-          <span>{{ $orderdata->orderanddetail->city }},{{ $orderdata->orderanddetail->zip_code }}</span>
-        </div>
-  
-        <div>
-          <span>{{ $orderdata->orderanddetail->phone_number }}</span>
-        </div>
-  
-        <div>
-          <span>{{ $orderdata->orderanddetail->email }}</span>
-        </div>
-      </section>
-  
-      <div class="clearfix"></div>
-  
-      <section id="items">
-  
-        <table cellpadding="0" cellspacing="0">
-  
-          <tr>
-            <th>SL#</th> <!-- Dummy cell for the row number and row commands -->
-            <th>Order ID#</th> <!-- Dummy cell for the row number and row commands -->
-            <th>Product</th>
-            <th>QTY</th>
-            <th>Unit Price</th>
-            <th>Shipping cost</th>
-            <th>Total</th>
-          </tr>
-          @foreach ( $orderdata as $key=>$data)
-          <tr data-iterate="item">
-            <td>{{ $key+1 }}</td> <!-- Don't remove this column as it's needed for the row commands -->
-            <td>{{ $orderdata->order_id }}</td> 
-            <td>{{ $orderdata->product_name }}</td>
-            <td>{{ $orderdata->qty }}</td>
-            <td>unit price</td>
-            <td>50</td>
-            <td>{{ $orderdata->price }}</td>
-          </tr>
-          @endforeach
-          
-  
-        </table>
-  
-      </section>
-  
-      <section id="sums">
-  
-        <table cellpadding="0" cellspacing="0">
-          <tr>
-            <th>{amount_subtotal_label}</th>
-            <td>{amount_subtotal}</td>
-          </tr>
-  
-          <tr data-iterate="tax">
-            <th>{tax_name}</th>
-            <td>{tax_value}</td>
-          </tr>
-  
-          <tr class="amount-total">
-            <th>{amount_total_label}</th>
-            <td>{{ $orderdata->price }}</td>
-          </tr>
-  
-          <!-- You can use attribute data-hide-on-quote="true" to hide specific information on quotes.
-                 For example Invoicebus doesn't need amount paid and amount due on quotes  -->
-          <tr data-hide-on-quote="true">
-            <th>{amount_paid_label}</th>
-            <td>{{ $orderdata->price }}</td>
-          </tr>
-  
-  
-        </table>
-  
+        <section id="memo">
+            <div class="logo">
+                <img data-logo="{company_logo}" />
+            </div>
+
+            <div class="company-info">
+                <div>Construction Management System</div>
+
+                <br />
+
+                <span>Gulshan,Dhaka </span>
+                <span>{1212}</span>
+
+                <br />
+
+                <span>01721926182</span>
+                <span>iftekherpial67@gmail.com</span>
+            </div>
+
+        </section>
+
+        <section id="invoice-title-number">
+
+            <span id="title">Coustomer Invoice</span>
+
+        </section>
+
         <div class="clearfix"></div>
-  
-      </section>
-  
-      <div class="clearfix"></div>
-  
-      <section id="invoice-info">
-        <div>
-          <span>{issue_date_label}</span> <span>{issue_date}</span>
-        </div>
-        <div>
-          <span>{due_date_label}</span> <span>{due_date}</span>
-        </div>
-  
-        <br />
-  
-        <div>
-          <span>{currency_label}</span> <span>{currency}</span>
-        </div>
-        <div>
-          <span>{po_number_label}</span> <span>{po_number}</span>
-        </div>
-        <div>
-          <span>{net_term_label}</span> <span>{net_term}</span>
-        </div>
-      </section>
-  
-      <section id="terms">
-  
-        <div class="notes">{terms}</div>
-  
-        <br />
-  
-        <div class="payment-info">
-          <div>{payment_info1}</div>
-          <div>{payment_info2}</div>
-          <div>{payment_info3}</div>
-          <div>{payment_info4}</div>
-          <div>{payment_info5}</div>
-        </div>
-  
-      </section>
-  
-      <div class="clearfix"></div>
-  
-      <div class="thank-you">{terms_label}</div>
-  
-      <div class="clearfix"></div>
+
+        <section id="client-info">
+            <span>To:</span>
+            <div>
+                <span class="bold">{{ $orderdata->orderanddetail->first_name }}
+                    {{ $orderdata->orderanddetail->last_name }}<< /span>
+            </div>
+
+            <div>
+                <span>{{ $orderdata->orderanddetail->address }}</span>
+            </div>
+
+            <div>
+                <span>{{ $orderdata->orderanddetail->city }},{{ $orderdata->orderanddetail->zip_code }}</span>
+            </div>
+
+            <div>
+                <span>{{ $orderdata->orderanddetail->phone_number }}</span>
+            </div>
+
+            <div>
+                <span>{{ $orderdata->orderanddetail->email }}</span>
+            </div>
+        </section>
+
+        <div class="clearfix"></div>
+
+        <section id="items">
+
+            <table cellpadding="0" cellspacing="0">
+
+                <tr>
+                    <th>SL#</th> <!-- Dummy cell for the row number and row commands -->
+                    <th>Order ID#</th> <!-- Dummy cell for the row number and row commands -->
+                    <th>Product</th>
+                    <th>QTY</th>
+                    <th>Unit Price</th>
+                    <th>Shipping cost</th>
+                    <th>Total</th>
+                </tr>
+                @foreach ($orderdata as $key => $data)
+                    <tr data-iterate="item">
+                        <td>{{ $key + 1 }}</td>
+                        <!-- Don't remove this column as it's needed for the row commands -->
+                        <td>{{ $orderdata->order_id }}</td>
+                        <td>{{ $orderdata->product_name }}</td>
+                        <td>{{ $orderdata->qty }}</td>
+                        <td>unit price</td>
+                        <td>50</td>
+                        <td>{{ $orderdata->price }}</td>
+                    </tr>
+                @endforeach
+
+
+            </table>
+
+        </section>
+
+        <section id="sums">
+
+            <table cellpadding="0" cellspacing="0">
+                <tr>
+                    <th>{amount_subtotal_label}</th>
+                    <td>{amount_subtotal}</td>
+                </tr>
+
+                <tr data-iterate="tax">
+                    <th>{tax_name}</th>
+                    <td>{tax_value}</td>
+                </tr>
+
+                <tr class="amount-total">
+                    <th>{amount_total_label}</th>
+                    <td>{{ $orderdata->price }}</td>
+                </tr>
+
+                <!-- You can use attribute data-hide-on-quote="true" to hide specific information on quotes.
+                 For example Invoicebus doesn't need amount paid and amount due on quotes  -->
+                <tr data-hide-on-quote="true">
+                    <th>{amount_paid_label}</th>
+                    <td>{{ $orderdata->price }}</td>
+                </tr>
+
+
+            </table>
+
+            <div class="clearfix"></div>
+
+        </section>
+
+        <div class="clearfix"></div>
+
+        <section id="invoice-info">
+            <div>
+                <span>{issue_date_label}</span> <span>{issue_date}</span>
+            </div>
+            <div>
+                <span>{due_date_label}</span> <span>{due_date}</span>
+            </div>
+
+            <br />
+
+            <div>
+                <span>{currency_label}</span> <span>{currency}</span>
+            </div>
+            <div>
+                <span>{po_number_label}</span> <span>{po_number}</span>
+            </div>
+            <div>
+                <span>{net_term_label}</span> <span>{net_term}</span>
+            </div>
+        </section>
+
+        <section id="terms">
+
+            <div class="notes">{terms}</div>
+
+            <br />
+
+            <div class="payment-info">
+                <div>{payment_info1}</div>
+                <div>{payment_info2}</div>
+                <div>{payment_info3}</div>
+                <div>{payment_info4}</div>
+                <div>{payment_info5}</div>
+            </div>
+
+        </section>
+
+        <div class="clearfix"></div>
+
+        <div class="thank-you">{terms_label}</div>
+
+        <div class="clearfix"></div>
     </div>
-  
+
     <script src="http://cdn.invoicebus.com/generator/generator.min.js?data=data.js"></script>
-  </body>
+</body>
 
 </html>

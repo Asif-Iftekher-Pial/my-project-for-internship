@@ -73,6 +73,7 @@ class CreateProductForm extends Controller
             if ($file->isValid()) {
                 $filename =date('Ymdhms').'.'.$file->getClientOriginalExtension();
                 $file->storeAs('just_uploaded', $filename);
+                @unlink(public_path('uploaded_Images/just_uploaded/' . $product_list->image ));
             }
         }
         $product_list->update([

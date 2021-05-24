@@ -12,7 +12,7 @@ class ProductTable extends Controller
     public function index()
     {
 
-        $product_list=Product::paginate(5); 
+        $product_list=Product::paginate(5);
         return view('backend.layouts.products.product_list_table',compact('product_list'));
     }
 
