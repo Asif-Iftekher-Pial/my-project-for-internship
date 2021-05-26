@@ -1834,7 +1834,7 @@
   margin-bottom: 15px; }
   .block-header h2 {
     margin: 0 !important;
-    color: #666 !important;
+    color: rgb(240, 10, 10);
     font-weight: normal;
     font-size: 16px; }
     .block-header h2 small {

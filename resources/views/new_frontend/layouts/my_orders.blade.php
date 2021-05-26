@@ -7,8 +7,8 @@
         <tr>
             <th>SL</th>
             <th>Customer ID</th>
+            <th>Order ID</th>
             <th>Order Date</th>
-            <th>Customer Name</th>
             <th>Product Name</th>
             <th>Product Qty</th>
             <th>Image</th>
@@ -21,8 +21,8 @@
         <tr>
             <th scope="row">{{ $key+1 }}</th>
             <td>{{ $data->order->customer->id }}</td>
+            <td>{{ $data->order->id }}</td>
             <td>{{ $data->order->created_at }}</td>
-            <td>{{ $data->order->customer->name }}</td>
             <td>{{ $data->product_name }}</td>
             <td>{{ $data->qty }}</td>
             <td>
