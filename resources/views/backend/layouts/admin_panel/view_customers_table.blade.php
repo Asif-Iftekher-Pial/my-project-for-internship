@@ -32,6 +32,7 @@
                             <th>Customer_Contact</th>
                             <th>Customer_Mail</th>
                             <th>Gender</th>
+                            <th>Role</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -45,6 +46,7 @@
                                 <td>{{ $data->contact }}</td>
                                 <td>{{ $data->email }}</td>
                                 <td>{{ $data->gender}}</td>
+                                <td>{{ $data->role}}</td>
                                 <td>
                                     <a onclick="return confirm('Are you sure Delete This Data?')" class="btn btn-danger btn-xs" href="{{ Route('customer_delete',$data->id) }}">Delete</a>
                                 </td>

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Backend\Admin_panel;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Models\Eforms;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 
 
@@ -38,18 +39,23 @@ class ViewEmployeeFormController extends Controller
         } 
 
 
+        $users = User::create([
+            'name' => $request->employee_name,
+            'email' => $request->email,
+            'password' => bcrypt('123456')
+        ]);
+       
         $data= [
             // 'e_id'=>$request->input('employee_id'),
-            'employee_name'=>$request->input('employee_name'),
-            'employee_designation'=>$request->input('employee_designation'),
+           
             'employee_address'=>$request->input('employee_address'),
+            'user_id'=>$users->id,
             'contact_information'=>$request->input('contact'),
-            'email'=>$request->input('email'),
             'qualification'=>$request->input('qualification'),
             'paddress'=>$request->input('paddress'),
+            'salary'=>$request->input('salary'),
             'employee_gender'=>$request->input('gender'),
             'age'=>$request->input('age'),
-            'password'=>$request->input('password'),
             'image'=>$filename,
 
  
@@ -57,6 +63,8 @@ class ViewEmployeeFormController extends Controller
 
         ];
         Eforms::create($data);
+       
+        
         return redirect()->Route('employee')->with('success','Employee added successfully');
 
     }
@@ -92,6 +100,8 @@ class ViewEmployeeFormController extends Controller
             if ($file->isValid()) {
                 $filename =date('Ymdhms').'.'.$file->getClientOriginalExtension();
                 $file->storeAs('employee_image', $filename);
+                @unlink(public_path('uploaded_Images/employee_image/' . $employee_list->image ));
+
             }
         }
         $employee_list=Eforms::findOrFail($id)->update([
@@ -103,6 +113,7 @@ class ViewEmployeeFormController extends Controller
             'email'=>$request->email,
             'qualification'=>$request->qualification,
             'paddress'=>$request->paddress,
+            'salary'=>$request->salary,
             'age'=>$request->age,
             'employee_gender'=>$request->gender,
             'password'=>$request->password,

@@ -18,13 +18,15 @@ class Admin
     public function handle(Request $request, Closure $next)
     { 
         if(Auth::check()){
-            if(Auth::user()->role=='admin' || Auth::user()->role=='employee')
+            if(Auth::user()->role=='admin' )
             {
                 return $next($request);
-            }else
+            }
+           
+            else
             {
                 Auth::logout();
-                return redirect()->route('adminlogin')->with('success','you are not admin');
+                return redirect()->route('adminlogin')->with('success','You are not Admin');
             }
             
         }else{

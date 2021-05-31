@@ -88,6 +88,11 @@
                     <input type="radio" value="female" name="gender" id="female" class="with-gap" required>
                     <label for="female" class="m-l-20">Female</label>
 			  </div>
+			  <div class="control-group">
+				<input type="radio" value="customer" name="role" id="customer" class="with-gap" required>
+                    <label for="role">Accept customers Terms & Condition</label>
+                    
+			  </div>
               <div class="control-group">
 				<label class="control-label" for="Password">Password</label>
 				<div class="controls">

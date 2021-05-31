@@ -1,17 +1,25 @@
 <aside id="leftsidebar" class="sidebar">
     <!-- User Info -->
-    <div class="user-info">
+    <div class="user-info" style="padding: 4px">
+        @if (auth()->user()->role=='employee')
         <div class="image">
-            <img src="images/user.png" width="48" height="48" alt="User" />
+            <img src="{{ '/uploaded_Images/employee_image/' . auth()->user()->employeeProfile->image }}" width="48" height="48" alt="User" />
         </div>
+        @endif
+       
+       
         <div class="info-container">
-            <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Asif Iftekher Pial</div>
-            <div class="email">iftekherpial67@gmail.com</div>
+            <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ auth()->user()->name }}</div>
+            <div class="email">{{ auth()->user()->email }}</div>
+            <div class="email">{{ auth()->user()->role }}</div>
             <div class="btn-group user-helper-dropdown">
                 <i class="material-icons" data-toggle="dropdown" aria-haspopup="true"
                     aria-expanded="true">keyboard_arrow_down</i>
                 <ul class="dropdown-menu pull-right">
+                    @if (auth()->user()->role == 'employee')
                     <li><a href="{{ route('profile') }}"><i class="material-icons">person</i>Profile</a></li>
+                    @endif
+                    
                     <li role="separator" class="divider"></li>
                     <li><a href="javascript:void(0);"><i class="material-icons">group</i>Followers</a></li>
                     <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
@@ -513,7 +521,7 @@
         <div class="version">
             <b>All Rights Reserved By:</b>
             <br>
-            <b>Asif Iftekhar Pial</b>
+            <b>{{ auth()->user()->name }}</b>
             <br>
             <b>Junior Software Developer</b>
 

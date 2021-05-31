@@ -35,8 +35,10 @@
                         <tr>
                             <td>SL</td>
                             <th>E_ID</th>
+                            <th>Image</th>
                             <th>Employee_Name</th>
-                            <th>Employee_Designation</th>
+                            <th>Email</th>
+                            <th>Login Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -44,12 +46,19 @@
                         @foreach ($users as $key=>$user )
                             <tr>
                                 <th scope="row">{{$key+1}}</th>
-                                <td>{{$user->id}}</td>
-                                <td>{{$user->employee_name}}</td>           {{-- here employee_name is database column name --}}
-                                <td>{{$user->employee_designation}}</td>
+                                <td>{{$user->user_id}}</td>
+                                <td>
+                                    <img width="150px" src="{{ '/uploaded_Images/employee_image/'.$user->image }}" alt="">
+                                </td>
+                                <td>{{$user->employeeDetail->name}}</td>           {{-- here employee_name is database column name --}}
+                                <td>{{$user->employeeDetail->email}}</td>
+                                <td>{{$user->status}}</td>
                                 <td>
                                     <a class="btn btn-primary btn-xs"  href="{{ route('employee.view',$user->id) }}">View</a>
+                                    @if (auth()->user()->role=='employee')
                                     <a class="btn btn-success btn-xs"  href="{{ Route('employee.edit',$user->id) }}">Update</a>
+                                   
+                                    @endif
                                     <a class="btn btn-danger btn-xs" onclick="return confirm('Are you sure Delete This Data?')"  href="{{ Route('employee.delete',$user->id ) }}">Delete</a>
                                 </td>
                             </tr>

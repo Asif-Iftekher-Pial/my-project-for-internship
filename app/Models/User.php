@@ -24,6 +24,7 @@ class User extends Authenticatable
         'contact',
         'address',
         'gender',
+        'role',
 
     ];
 
@@ -47,4 +48,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    
+    public function employeeProfile()
+    {
+        return $this->hasOne(Eforms::class,'user_id','id');
+    }
 }

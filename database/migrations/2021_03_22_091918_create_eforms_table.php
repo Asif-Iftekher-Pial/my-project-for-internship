@@ -15,17 +15,16 @@ class CreateEformsTable extends Migration
     {
         Schema::create('eforms', function (Blueprint $table) {
             $table->id();
-            $table->string('employee_name');
-            $table->string('employee_designation');
+            $table->integer('user_id');
             $table->string('employee_address');
             $table->integer('contact_information');
-            $table->string('email')->unique();
             $table->string('qualification');
             $table->string('paddress');
             $table->string('employee_gender');
             $table->integer('age');
-            $table->string('password');
-            $table->string('image')->nullable();;
+            $table->integer('salary');
+            $table->string('image')->nullable();
+            $table->string('status')->default('Inactive');
             
             $table->timestamps();
         });

@@ -13,9 +13,9 @@
                                 alt="AdminBSB - Profile Image" />
                         </div>
                         <div class="content-area">
-                            <h3>{{ $employee_list->employee_name }}</h3>
-                            <p>{{ $employee_list->email }} </p>
-                            <p>{{ $employee_list->employee_designation }}</p>
+                            <h3>{{ $employee_list->employeeDetail->name }}</h3>
+                            <p>{{ $employee_list->employeeDetail->email }} </p>
+                            <p>{{ $employee_list->employeeDetail->role }}</p>
                         </div>
                     </div>
 
@@ -57,15 +57,6 @@
                                     <span class="label bg-amber">Node.js</span>
                                 </div>
                             </li>
-                            <li>
-                                <div class="title">
-                                    <i class="material-icons">notes</i>
-                                    Description
-                                </div>
-                                <div class="content">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.
-                                </div>
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -92,7 +83,7 @@
 
                                                 <thead>
                                                     <tr>
-                                                        <td>E_ID</td>
+                                                        <th>E_ID</th>
                                                         <th>Contact Information</th>
                                                         <th>Parmanent Addesee</th>
                                                         <th>Age</th>
@@ -101,7 +92,7 @@
                                                 </thead>
                                                 <tbody>
 
-                                                    <td>{{ $employee_list->id }}</td>
+                                                    <td>{{ $employee_list->user_id }}</td>
                                                     <td>{{ $employee_list->contact_information }}</td>
                                                     <td>{{ $employee_list->paddress }}</td>
                                                     <td>{{ $employee_list->age }}</td>
@@ -114,73 +105,76 @@
                                 </div>
 
 
+                                @if (auth()->user()->role == 'employee')
 
-                                <div role="tabpanel" class="tab-pane fade in" id="profile_settings">
-                                    <form class="form-horizontal">
-                                        <div class="form-group">
-                                            <label for="OldPassword" class="col-sm-2 control-label">Old Password</label>
-                                            <div class="col-sm-8">
-                                                <li class="list-group-item">Cras justo odio</li>
-                                            </div>
-                                            <label for="OldPassword" class="col-sm-2 control-label">Old Password</label>
-                                            <div class="col-sm-8">
-                                                <li class="list-group-item">Cras justo odio</li>
-                                            </div>
-                                            <label for="OldPassword" class="col-sm-2 control-label">Old Password</label>
-                                            <div class="col-sm-8">
-                                                <li class="list-group-item">Cras justo odio</li>
-                                            </div>
-                                            <label for="OldPassword" class="col-sm-2 control-label">Old Password</label>
-                                            <div class="col-sm-8">
-                                                <li class="list-group-item">Cras justo odio</li>
-                                            </div>
-                                            <label for="OldPassword" class="col-sm-2 control-label">Old Password</label>
-                                            <div class="col-sm-8">
-                                                <li class="list-group-item">Cras justo odio</li>
-                                            </div>
-                                            
-                                        </div>
-                                    </form>
-                                </div>
-                                <div role="tabpanel" class="tab-pane fade in" id="change_password_settings">
-                                    <form class="form-horizontal">
-                                        <div class="form-group">
-                                            <label for="OldPassword" class="col-sm-3 control-label">Old Password</label>
-                                            <div class="col-sm-9">
-                                                <div class="form-line">
-                                                    <input type="password" class="form-control" id="OldPassword"
-                                                        name="OldPassword" placeholder="Old Password" required>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="NewPassword" class="col-sm-3 control-label">New Password</label>
-                                            <div class="col-sm-9">
-                                                <div class="form-line">
-                                                    <input type="password" class="form-control" id="NewPassword"
-                                                        name="NewPassword" placeholder="New Password" required>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="NewPasswordConfirm" class="col-sm-3 control-label">New Password
-                                                (Confirm)</label>
-                                            <div class="col-sm-9">
-                                                <div class="form-line">
-                                                    <input type="password" class="form-control" id="NewPasswordConfirm"
-                                                        name="NewPasswordConfirm" placeholder="New Password (Confirm)"
-                                                        required>
-                                                </div>
-                                            </div>
-                                        </div>
 
-                                        <div class="form-group">
-                                            <div class="col-sm-offset-3 col-sm-9">
-                                                <button type="submit" class="btn btn-danger">SUBMIT</button>
+                                    <div role="tabpanel" class="tab-pane fade in" id="profile_settings">
+                                        <form class="form-horizontal">
+                                            <div class="form-group">
+                                                <label for="OldPassword" class="col-sm-2 control-label">Old Password</label>
+                                                <div class="col-sm-8">
+                                                    <li class="list-group-item">Cras justo odio</li>
+                                                </div>
+                                                <label for="OldPassword" class="col-sm-2 control-label">Old Password</label>
+                                                <div class="col-sm-8">
+                                                    <li class="list-group-item">Cras justo odio</li>
+                                                </div>
+                                                <label for="OldPassword" class="col-sm-2 control-label">Old Password</label>
+                                                <div class="col-sm-8">
+                                                    <li class="list-group-item">Cras justo odio</li>
+                                                </div>
+                                                <label for="OldPassword" class="col-sm-2 control-label">Old Password</label>
+                                                <div class="col-sm-8">
+                                                    <li class="list-group-item">Cras justo odio</li>
+                                                </div>
+                                                <label for="OldPassword" class="col-sm-2 control-label">Old Password</label>
+                                                <div class="col-sm-8">
+                                                    <li class="list-group-item">Cras justo odio</li>
+                                                </div>
+
                                             </div>
-                                        </div>
-                                    </form>
-                                </div>
+                                        </form>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade in" id="change_password_settings">
+                                        <form class="form-horizontal">
+                                            <div class="form-group">
+                                                <label for="OldPassword" class="col-sm-3 control-label">Old Password</label>
+                                                <div class="col-sm-9">
+                                                    <div class="form-line">
+                                                        <input type="password" class="form-control" id="OldPassword"
+                                                            name="OldPassword" placeholder="Old Password" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="NewPassword" class="col-sm-3 control-label">New Password</label>
+                                                <div class="col-sm-9">
+                                                    <div class="form-line">
+                                                        <input type="password" class="form-control" id="NewPassword"
+                                                            name="NewPassword" placeholder="New Password" required>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="NewPasswordConfirm" class="col-sm-3 control-label">New Password
+                                                    (Confirm)</label>
+                                                <div class="col-sm-9">
+                                                    <div class="form-line">
+                                                        <input type="password" class="form-control" id="NewPasswordConfirm"
+                                                            name="NewPasswordConfirm" placeholder="New Password (Confirm)"
+                                                            required>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="col-sm-offset-3 col-sm-9">
+                                                    <button type="submit" class="btn btn-danger">SUBMIT</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>

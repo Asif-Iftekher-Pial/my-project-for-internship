@@ -25,7 +25,8 @@ class UserLoginController extends Controller
             'password'=>'required',
             'contact'=>'required',
             'address'=>'required',
-            'gender'=>'required'
+            'gender'=>'required',
+            'role'=>'required'
 
         ]);
 
@@ -36,7 +37,8 @@ class UserLoginController extends Controller
             'password'=>bcrypt($request->password),
             'contact'=>$request->contact,
             'address'=>$request->address,
-            'gender'=>$request->gender
+            'gender'=>$request->gender,
+            'role'=>$request->role
         ]);
         return redirect()->back()->with('success','Registration Successfull');
     }

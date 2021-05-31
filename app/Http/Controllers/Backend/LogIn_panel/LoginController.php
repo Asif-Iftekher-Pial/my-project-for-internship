@@ -37,9 +37,20 @@ class LoginController extends Controller
 
         // dd($credentials);
         if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
 
-            return redirect()->route('home');
+            $request->session()->regenerate();
+            
+            if (auth()->user()->role == 'admin') 
+            { 
+                return redirect()->route('home');
+            } 
+            elseif (auth()->user()->role == 'employee') {
+                $status = Eforms::where('user_id', auth()->user()->id);
+                $status->update([
+                    'status'=> 'Active'
+                ]);
+                return redirect()->route('home');
+            }
         }
 
         return back()->withErrors([
@@ -50,7 +61,13 @@ class LoginController extends Controller
 
     public function logout()
         {
-            
+            if(auth()->user()->role == 'employee')
+            {
+                $status = Eforms::where('user_id', auth()->user()->id);
+                $status->update([
+                    'status'=> 'Inactive'
+                ]);
+            }
             Auth::logout();
             return redirect()->route('adminlogin')->with('success','Logout Successful');
 
