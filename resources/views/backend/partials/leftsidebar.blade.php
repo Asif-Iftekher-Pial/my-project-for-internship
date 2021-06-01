@@ -70,7 +70,11 @@
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="{{ Route('customer') }}">View Customers</a>
+                            <a href="{{ Route('customer') }}">All Users</a>
+                        </li>
+                        
+                        <li>
+                            <a href="{{ Route('customerlist') }}">View Customers</a>
                         </li>
 
                         <li>

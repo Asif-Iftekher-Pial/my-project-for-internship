@@ -116,8 +116,9 @@ Route::group(['prefix' => 'admin'], function () {
 route::group(['middleware' => 'auth'], function () {
 
     // Customer Routes
-    Route::get('view_customers', [ViewCustomerController::class, 'customer'])->name('customer');
-    Route::get('customer/delete/{id}', [ViewCustomerController::class, 'delete'])->name('customer_delete');
+    Route::get('/view_customers', [ViewCustomerController::class, 'customer'])->name('customer');
+    Route::get('/customerlist', [ViewCustomerController::class, 'customerlist'])->name('customerlist');
+    Route::get('/customer/delete/{id}', [ViewCustomerController::class, 'delete'])->name('customer_delete');
 
 
     //Products Route

@@ -387,7 +387,7 @@
         #sums table tr:last-child td {
             font-size: 15px;
             font-weight: bold;
-            color: white;
+            color: rgb(2, 2, 2);
         }
 
         #invoice-info {

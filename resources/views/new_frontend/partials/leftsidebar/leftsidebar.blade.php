@@ -1,6 +1,6 @@
 <div id="sidebar" class="span3">
-    <div class="well well-small"><a id="myCart" href="{{ route('viewCart') }}"><img src="/fronendCSS_JS_files/themes/images/ico-cart.png" alt="cart"></span></a></div>
-    <ul id="sideManu" class="nav nav-tabs nav-stacked">
+    <div class="well well-small"><a id="myCart" href="{{ route('viewCart') }}"><img src="/fronendCSS_JS_files/themes/images/ico-cart.png" alt="cart">[ {{ count(Cart::content()) }} ] Items in your cart  <span class="badge badge-warning pull-right">{{ Cart::subtotal() }}</span></a></div>
+     <ul id="sideManu" class="nav nav-tabs nav-stacked">
 
         {{-- @dd($catagory_names); --}}
         <li class="subMenu open"><a> Building Materials</a>

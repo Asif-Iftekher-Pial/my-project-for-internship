@@ -50,7 +50,7 @@
                                 <td>
                                     <img width="150px" src="{{ '/uploaded_Images/employee_image/'.$user->image }}" alt="">
                                 </td>
-                                <td>{{$user->employeeDetail->name}}</td>           {{-- here employee_name is database column name --}}
+                                <td>{{$user->employeeDetail->name}}</td>          
                                 <td>{{$user->employeeDetail->email}}</td>
                                 <td>{{$user->status}}</td>
                                 <td>

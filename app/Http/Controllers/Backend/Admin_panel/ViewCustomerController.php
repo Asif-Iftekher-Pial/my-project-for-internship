@@ -10,6 +10,14 @@ use Illuminate\Http\Request;
 class ViewCustomerController extends Controller
 {
     //
+
+    public function customerlist()
+    {
+        $customerlist = User::where('role','customer')->paginate(5);
+        //dd($customerlist);
+        return view('backend.layouts.admin_panel.customerlist',compact('customerlist'));
+
+    }
     public function customer()
     {
         $customer_info_list=User::paginate(5);   //select all from the model C_forms or C_froms table from database

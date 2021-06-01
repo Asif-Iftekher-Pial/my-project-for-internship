@@ -26,7 +26,7 @@ class ProductTable extends Controller
     {
         
         $search_text=$_GET['query'];
-
+       
         $searchProduct=Product::where('productname' ,'LIKE','%'.$search_text.'%')->with('productCatagory')->paginate(5);
         // dd($searchProduct);
         return view('backend.layouts.products.products_album',compact('searchProduct'));
