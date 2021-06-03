@@ -14,6 +14,7 @@ use App\Http\Controllers\Backend\Products_panel\ProductAlbum;
 use App\Http\Controllers\Backend\Products_panel\ProductTable;
 use App\Http\Controllers\Backend\Report_Generator\Reports;
 use App\Http\Controllers\Frontend\Cart\CartController;
+use App\Http\Controllers\Frontend\ForgatePassword\ForgatePasswordController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\HomepageController;
 use App\Http\Controllers\Frontend\OrderandCart\OrderController;
@@ -41,6 +42,16 @@ Route::post('/registration', [UserLoginController::class, 'registration'])->name
 Route::get('/login_page', [UserLoginController::class, 'userloginpage'])->name('user_Login');
 Route::post('/login', [UserLoginController::class, 'login'])->name('Login');
 Route::get('/logout', [UserLoginController::class, 'logout'])->name('logout');
+
+
+//forgate Password
+Route::get('/submitpage', [ForgatePasswordController::class, 'submitpage'])->name('submitpage');
+Route::post('/submitpage-link', [ForgatePasswordController::class, 'submitpagelink'])->name('submitpagelink');
+Route::get('/submitpage-link-click/{token}/{email}', [ForgatePasswordController::class, 'passwordReset'])->name('password.reset');
+
+
+
+Route::post('/reset-password', [ForgatePasswordController::class, 'resetPassword'])->name('password.reset.post');
 
 
 //Product Routing 

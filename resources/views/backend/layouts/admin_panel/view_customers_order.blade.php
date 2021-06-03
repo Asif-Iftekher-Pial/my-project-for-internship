@@ -37,15 +37,15 @@
                     </form>
                     <table class="table table-striped">
                         @if (session()->has('success'))
-                        <div class="alert alert-success">
-                            {{ session()->get('success') }}
-                        </div>
-                    @endif
+                            <div class="alert alert-success">
+                                {{ session()->get('success') }}
+                            </div>
+                        @endif
                         <thead>
                             <tr>
                                 <th>SL</th>
                                 <th>order Date</th>
-                                
+
                                 <th>C-ID</th>
                                 <th>Customer Name</th>
                                 <th>Contact Number</th>
@@ -61,7 +61,7 @@
                                 <tr>
                                     <th scope="row">{{ $key + 1 }}</th>
                                     <td>{{ $data->created_at }}</td>
-                                    
+
                                     <td>{{ $data->customer->id }}</td>
                                     <td>{{ $data->customer->name }}</td>
                                     <td>{{ $data->phone_number }}</td>
@@ -83,14 +83,14 @@
                                                             href="{{ route('statusupdate', ['id' => $data->id, 'status' => 'InTransit']) }}">In
                                                             Transit</a>
                                                     </li>
-                                                    @elseif ($data->status == 'Delivered')
+                                                @elseif ($data->status == 'Delivered')
                                                     <li><a class="dropdown-item"
-                                                        href="{{ route('statusupdate', ['id' => $data->id, 'status' => 'InTransit']) }}">In
-                                                        Transit</a>
-                                                </li>
-                                                <li><a class="dropdown-item"
-                                                        href="{{ route('statusupdate', ['id' => $data->id, 'status' => 'Processing']) }}">Processing</a>
-                                                </li>
+                                                            href="{{ route('statusupdate', ['id' => $data->id, 'status' => 'InTransit']) }}">In
+                                                            Transit</a>
+                                                    </li>
+                                                    <li><a class="dropdown-item"
+                                                            href="{{ route('statusupdate', ['id' => $data->id, 'status' => 'Processing']) }}">Processing</a>
+                                                    </li>
 
                                                 @else
                                                     <li><a class="dropdown-item"
@@ -100,7 +100,8 @@
                                             </ul>
                                         </div>
                                     </td>
-                                    <td><a class="btn btn-success btn-xs"  href="{{ route('ordersdetails',$data->id) }}">View</a></td>
+                                    <td><a class="btn btn-success btn-xs"
+                                            href="{{ route('ordersdetails', $data->id) }}">View</a></td>
                                 </tr>
 
                             @endforeach

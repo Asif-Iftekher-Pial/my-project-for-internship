@@ -22,6 +22,7 @@ class CreateUsersLoginTable extends Migration
             $table->string('address')->nullable();
             $table->string('gender')->nullable();
             $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
