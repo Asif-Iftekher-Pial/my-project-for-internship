@@ -128,6 +128,19 @@
                         </li>
                     </ul>
                 </li>
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">assignment</i>
+                        <span>Coupon</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="{{ route('coupon') }}">Coupon</a>
+                        </li>
+
+                       
+                    </ul>
+                </li>
 
 
 

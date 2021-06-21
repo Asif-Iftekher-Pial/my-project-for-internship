@@ -96,7 +96,14 @@ class OrderController extends Controller
                     'qty' => $data->qty,
                     'price' => $data->price
                 ]);
+
+                $product = Product::find($data->id);
+
+                $product->update([
+                    'quantity'=>$product->quantity - $data->qty
+                ]);
             }
+            
             DB::commit();
             Cart::destroy();
             // dd('hii');

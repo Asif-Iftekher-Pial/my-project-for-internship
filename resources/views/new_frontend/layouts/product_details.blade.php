@@ -41,33 +41,39 @@
             <div class="span6">
                 <h3>{{ $product_list->productname }}</h3>
                 <hr class="soft">
-                <form  class="form-horizontal qtyFrm">
-                    
+                <form class="form-horizontal qtyFrm">
+
                     <input type="hidden" name="product_id" value="{{ $product_list['id'] }}">
                     <div class="control-group">
                         <label class="control-label"><span>BDT {{ $product_list->price }}</span></label>
                         <div class="controls">
-                            
-                            
-                            <a class="btn btn-large btn-primary pull-right" href={{ Route('addToCart', $product_list->id) }}>Add to Cart<i
-                                class="icon-shopping-cart"></i></a>
-                            </div>
+
+
+
+                        </div>
                     </div>
                 </form>
 
                 <hr class="soft">
-                <h4>{{ $product_list->quantity }} items in stock</h4>
+                
+
+                @if ($product_list->quantity < 5)
+                <h4 style="color: red ;">
+                    Product Stockout!!
+                </h4>
+            @else
+                <a class="btn btn-large btn-primary pull-right"
+                    href={{ Route('addToCart', $product_list->id) }}>Add to Cart<i
+                        class="icon-shopping-cart"></i></a>
+                        <br>
+                <h4 style="text-align: left" >{{ $product_list->quantity }} items in stock</h4>
+
+
+            @endif
+
+
                 <h4>Item Catagory:{{ $product_list->productCatagory->catagoryname }}</h4>
-                <form class="form-horizontal  pull-right">
-                    <div class="control-group">
-                        <label class="control-label">
-                            <h5><span>Estimate Quantity</span></h5>
-                        </label>
 
-                        <input type="text" placeholder="Estimation">
-
-                    </div>
-                </form>
                 <hr class="soft clr">
                 <a class="btn btn-small pull-right" href="#detail">More Details</a>
                 <br class="clr">

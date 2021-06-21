@@ -76,6 +76,10 @@
                     <td>5%</td>
                 </tr>
                 <tr>
+                    <td colspan="6" style="text-align:right">Discount:</td>
+                    <td>xxxxx</td>
+                </tr>
+                <tr>
                     @php
                         $total = (float) str_replace(',', '', Cart::subtotal());
                     @endphp
@@ -90,6 +94,16 @@
             @csrf
             <a href="{{ route('orderform') }}" class="btn btn-large pull-right"><i
                     class="icon-arrow-right"></i>CheckOut</a>
+        </form>
+
+        <form  action="#" method="post">
+            @csrf
+            <div class="controls">
+                <input class="span3" type="text" name="coupon_code" placeholder="Coupon Code">
+            </div>
+
+            <button class="btn btn-primary waves-effect" type="submit">Apply</button>
+                    
         </form>
 
 

@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\Admin_panel\ViewProductController;
 use App\Http\Controllers\Backend\Admin_panel\ViewEmployeeController;
 use App\Http\Controllers\Backend\Admin_panel\ViewEmployeeFormController;
 use App\Http\Controllers\Backend\Catagory\ProductCatagory;
+use App\Http\Controllers\Backend\CouponController\CouponController;
 use App\Http\Controllers\Backend\Login_panel\LoginController;
 use App\Http\Controllers\Backend\Products_panel\CreateProductForm;
 use App\Http\Controllers\Backend\Products_panel\ProductAlbum;
@@ -120,6 +121,10 @@ Route::group(['prefix' => 'admin'], function () {
 
         //Reports generator 
         Route::get('reports', [Reports::class, 'report'])->name('report');
+
+        //coupon routes
+        Route::get('/add_coupon', [CouponController::class, 'add'])->name('coupon');
+        Route::post('/make_coupon', [CouponController::class, 'create'])->name('coupon_create');
     });
 });
 

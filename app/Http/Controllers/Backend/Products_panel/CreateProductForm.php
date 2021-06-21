@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend\Products_panel;
 use App\Http\Controllers\Controller;
 use App\Models\Catagory;
 use App\Models\Product;
+use App\Models\Stock;
 use Illuminate\Http\Request;
 
 class CreateProductForm extends Controller
@@ -39,7 +40,7 @@ class CreateProductForm extends Controller
 
         } 
 
-        Product::create([
+       $createProduct=Product::create([
 
             'productname'=>$request->productname,
             'category_id'=>$request->category_id,
@@ -49,6 +50,15 @@ class CreateProductForm extends Controller
             'price'=>$request->price
 
         ]);
+
+
+
+        // Stock::create([
+        //     'product_id'=>$request->$createProduct->id,
+        //     'stock'=>$request->$createProduct->quantity
+
+
+        // ]);
 
         return redirect()->route('view_product')->with('success', 'Product Added Successfully');;
     }
